@@ -29,32 +29,32 @@
 
 
 """ ============= class method ===================="""
-class Employee:
-    """ property related to the class not the instances
-    and this property is shared between all the class instances """
-    count = 0  # class variable
-    def __init__(self, name='', email='', salary=0):
-        self.name= name  # instance variables
-        self.email=email
-        self.salary= salary
-        Employee.count +=1
-
-
-    def print_details(self, message='Hi'):  # this is an instance method , function -depends on caller instance-
-        print(f"Empname={self.name}, {self.email}, {self.salary}|| {message}")
-
-
-    # function print number of employees in the class
-    "function depends on the class not the instance "
-    @classmethod  # first parameter of the function represent current class
-    def get_no_of_employees(cls):  # cls ---> represent current class
-        print(cls)
-        return cls.count
-
-    # use class method to create default object
-    @classmethod
-    def create_default_object(cls):
-        return  cls("default", "default", 30000)
+# class Employee:
+#     """ property related to the class not the instances
+#     and this property is shared between all the class instances """
+#     count = 0  # class variable
+#     def __init__(self, name='', email='', salary=0):
+#         self.name= name  # instance variables
+#         self.email=email
+#         self.salary= salary
+#         Employee.count +=1
+#
+#
+#     def print_details(self, message='Hi'):  # this is an instance method , function -depends on caller instance-
+#         print(f"Empname={self.name}, {self.email}, {self.salary}|| {message}")
+#
+#
+#     # function print number of employees in the class
+#     "function depends on the class not the instance "
+#     @classmethod  # first parameter of the function represent current class
+#     def get_no_of_employees(cls):  # cls ---> represent current class
+#         print(cls)
+#         return cls.count
+#
+#     # use class method to create default object
+#     @classmethod
+#     def create_default_object(cls):
+#         return  cls("default", "default", 30000)
 
 #
 # print(Employee)
@@ -92,3 +92,54 @@ class Employee:
 # # add c + c2  ==> new complex number
 # c3 = Complexx.add_complexx(c, 10)
 # print(c3)
+
+
+""" ------------------------- check this ----------------------------"""
+
+
+
+class Employee:
+    count = 0  # class variable
+    def __init__(self, name='', email='', salary=0):
+        self.name= name  # instance variables
+        self.email=email
+        self.salary= salary
+        Employee.count +=1
+
+
+    def print_details(self, message='Hi'):  # this is an instance method , function -depends on caller instance-
+        print(f"Empname={self.name}, {self.email}, {self.salary}|| {message}")
+
+    @classmethod  # first parameter of the function represent current class
+    def get_no_of_employees(cls):  # cls ---> represent current class
+        print(cls)
+        return cls.count
+
+    @classmethod
+    def create_default_object(cls):
+        return  cls("default", "default", 30000)
+
+    @staticmethod  # helper method --> doesn't depend on the instance or the class
+    def cal_net_salary(salary):
+        return salary * .8
+
+
+
+emp1= Employee("Ahmed", "ahmed@gmail.com", 40000)
+print(emp1.salary)
+
+"calculate net salary "
+
+def cal_net_salary(salary):
+    return  salary * .8
+
+
+print(cal_net_salary(emp1.salary))
+print(cal_net_salary(100000))
+
+
+print(Employee.cal_net_salary(5575686))
+print(Employee.cal_net_salary(emp1.salary))
+
+
+
